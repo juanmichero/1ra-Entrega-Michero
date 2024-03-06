@@ -27,11 +27,11 @@ router.get('/:cartId', async (req, res) => {
             return
         } 
 
-        res.json(cart.products)
+        res.status(200).json(cart.products)
         return
     }
     catch {
-        res.status(400).json({ error: 'Error retrieving cart' })
+        res.status(404).json({ error: 'Error retrieving cart' })
     }
 })
 
@@ -45,10 +45,10 @@ router.post('/:cartId/product/:productId', async (req, res) => {
 
         await cartsManager.addToCart(cartId, productId)
 
-        res.json(cart)
+        res.status(201).json(cart)
     }
     catch {
-        res.status(400).json({ error: 'Error adding product to cart' })
+        res.status(400).json({ error: `Error adding product ${+req.params.productId} to cart ${+req.params.cartId}` })
     }
 })
 

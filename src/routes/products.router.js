@@ -14,10 +14,10 @@ router.get('/', async (req, res) => {
             ? products.slice(0, limit)
             : products
         
-        res.json(limitedProducts)
+        res.status(200).json(limitedProducts)
         return
     } 
-    catch (err) {
+    catch {
         res.status(400).json({ error: 'Error retrieving products' })
     }
 })
@@ -29,15 +29,15 @@ router.get('/:productId', async (req, res) => {
         const product = await productsManager.getProductsById(productId)
 
         if(!product) {
-            res.json({ error: `Product ${productId} not found`})
+            res.status(404).json({ error: `Product ${productId} not found`})
             return
         }
 
-        res.json(product)
+        res.status(200).json(product)
         return
     }
-    catch (err) {
-        res.status(400).json({ error: 'Error retrieving product' })
+    catch {
+        res.status(404).json({ error: 'Error retrieving product' })
     }
 })
 
@@ -47,7 +47,7 @@ router.post('/', async (req, res) => {
 
         res.status(201).json({ status: 'Product created', message: req.body })
     }
-    catch (err) {
+    catch {
         res.status(400).json({ error: 'Error creating product' })
     }
 })
@@ -64,15 +64,15 @@ router.put('/:productId', async (req, res) => {
         const productIndex = products.findIndex(prod => prod.id === productId)
 
         if(productIndex < 0) {
-            res.json({ error: `Product ${productId} not found`})
+            res.status(404).json({ error: `Product ${productId} not found`})
             return
         }
 
         await productsManager.updateProduct(productId, updates)
 
-        res.status(201).json({ status: 'Product updated', message: products[productIndex] })
+        res.status(200).json({ status: 'Product updated', message: products[productIndex] })
     }
-    catch (err) {
+    catch {
         res.status(400).json({ error: 'Error updating product' })
     }
 })
@@ -93,9 +93,9 @@ router.delete('/:productId', async (req, res) => {
 
         await productsManager.deleteProduct(productId)
 
-        res.status(201).json({ status: 'Product deleted', message: products[productIndex] })
+        res.status(200).json({ status: 'Product deleted', message: products[productIndex] })
     }
-    catch (err) {
+    catch {
         res.status(400).json({ error: 'Error deleting product' })
     }
 })

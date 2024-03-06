@@ -35,7 +35,7 @@ class CartManager {
 
             return JSON.parse(cartsContent)
         }
-        catch (err){
+        catch {
             return []
         }
     }
@@ -46,9 +46,21 @@ class CartManager {
         const cart = carts.find(cart => cart.id === id)
 
         if(!cart) {
-            throw new Error('Error retrieving cart')
+            console.error(`Cart ${id} not found`)
+            return
         } else {
             return cart
+        }
+    }
+
+    async getProducts() {
+        try {
+            const productsContent = await fs.promises.readFile(`${__dirname}/../assets/Products.json`)
+
+            return JSON.parse(productsContent)
+        } 
+        catch {
+            throw new Error('Error retrieving products from Products.json')
         }
     }
 
@@ -57,12 +69,26 @@ class CartManager {
 
         const cartIndex = await carts.findIndex(cart => cart.id === cartId)
 
-        if(cartIndex !== -1) {
-            this.carts[cartIndex].products.push({ 'product': productId, 'quantity': 1 })
+        const products = await this.getProducts()
 
-            await this.updateFile()
+        const existingProductInProducts = products.find(prod => prod.id === productId)
+
+        if(existingProductInProducts) {
+            if(cartIndex !== -1) {
+                const existingProduct = this.carts[cartIndex].products.find(prod => prod.product === productId)
+    
+                if(existingProduct) {
+                    existingProduct.quantity += 1
+                } else {
+                    this.carts[cartIndex].products.push({ 'product': productId, 'quantity': 1 })
+                }
+                
+                await this.updateFile()
+            } else {
+                throw new Error(console.error(`Error adding product ${productId} to cart ${cartId}`))
+            }
         } else {
-            throw new Error('Error adding product to cart')
+            throw new Error(console.error(`Error adding product ${productId} to cart ${cartId}`))
         }
     }
 }

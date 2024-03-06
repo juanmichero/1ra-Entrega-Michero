@@ -21,11 +21,12 @@ class ProductsManager {
     async addProduct(title, description, price, thumbnail, code, stock) {
 
         if(this.products.some(prod => prod.code === code)) {
-            throw new Error("'Code' field already exists for one or more products.")
+            // console.error("'Code' field already exists for one or more products.")
+            throw new Error(console.error("'Code' field already exists for one or more products."))
         }
 
         if(!title || !description || isNaN(price) || price <= 0 || price === undefined || !price || !thumbnail || !code || isNaN(stock) || stock < 0 || stock === undefined || !stock) {
-            throw new Error("One or more fields have invalid values.")
+            throw new Error(console.error("One or more fields have invalid values."))
         }
 
         const product = {
@@ -50,7 +51,7 @@ class ProductsManager {
 
             return JSON.parse(productsContent)
         }
-        catch (err){
+        catch {
             return []
         }
     }
@@ -61,7 +62,8 @@ class ProductsManager {
         const product = products.find(prod => prod.id === id)
 
         if(!product) {
-            throw new Error('Error retrieving product')
+            console.error(`Product ${id} not found`)
+            return
         } else {
             return product
         }
@@ -77,7 +79,7 @@ class ProductsManager {
 
             await this.updateFile()
         } else {
-            throw new Error('Error updating the product')
+            throw new Error(console.error(`Error updating the product ${id}`))
         }
     }
 
@@ -91,7 +93,7 @@ class ProductsManager {
 
             await this.updateFile()
         } else {
-            throw new Error('Error deleting the product')
+            throw new Error(console.error(`Error deleting the product ${id}`))
         }
     }
 }
