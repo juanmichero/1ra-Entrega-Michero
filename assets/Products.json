@@ -1,0 +1,122 @@
+[
+	{
+		"id": 1,
+		"status": true,
+		"title": "test product 1",
+		"description": "this is a test product 1",
+		"price": 100,
+		"thumbnail": "no image",
+		"code": "a1",
+		"stock": 25
+	},
+	{
+		"id": 2,
+		"status": true,
+		"title": "test product 2",
+		"description": "this is a test product 2",
+		"price": 200,
+		"thumbnail": "no image",
+		"code": "a2",
+		"stock": 25
+	},
+	{
+		"id": 3,
+		"status": true,
+		"title": "test product 3",
+		"description": "this is a test product 3",
+		"price": 300,
+		"thumbnail": "no image",
+		"code": "a3",
+		"stock": 25
+	},
+	{
+		"id": 4,
+		"status": true,
+		"title": "test product 4",
+		"description": "this is a test product 4",
+		"price": 400,
+		"thumbnail": "no image",
+		"code": "a4",
+		"stock": 25
+	},
+	{
+		"id": 5,
+		"status": true,
+		"title": "test product 5",
+		"description": "this is a test product 5",
+		"price": 500,
+		"thumbnail": "no image",
+		"code": "a5",
+		"stock": 25
+	},
+	{
+		"id": 6,
+		"status": true,
+		"title": "test product 6",
+		"description": "this is a test product 6",
+		"price": 600,
+		"thumbnail": "no image",
+		"code": "a6",
+		"stock": 25
+	},
+	{
+		"id": 7,
+		"status": true,
+		"title": "test product 7",
+		"description": "this is a test product 7",
+		"price": 700,
+		"thumbnail": "no image",
+		"code": "a7",
+		"stock": 25
+	},
+	{
+		"id": 8,
+		"status": true,
+		"title": "test product 8",
+		"description": "this is a test product 8",
+		"price": 800,
+		"thumbnail": "no image",
+		"code": "a8",
+		"stock": 25
+	},
+	{
+		"id": 9,
+		"status": true,
+		"title": "test product 9",
+		"description": "this is a test product 9",
+		"price": 900,
+		"thumbnail": "no image",
+		"code": "a9",
+		"stock": 25
+	},
+	{
+		"id": 10,
+		"status": true,
+		"title": "test product 10",
+		"description": "this is a test product 10",
+		"price": 1000,
+		"thumbnail": "no image",
+		"code": "a10",
+		"stock": 25
+	},
+	{
+		"id": 11,
+		"status": true,
+		"title": "test product 11",
+		"description": "this is a test product 11",
+		"price": 1100,
+		"thumbnail": "no image",
+		"code": "a11",
+		"stock": 25
+	},
+	{
+		"id": 12,
+		"status": true,
+		"title": "test product 12",
+		"description": "this is a test product 12",
+		"price": 1200,
+		"thumbnail": "no image",
+		"code": "a12",
+		"stock": 25
+	}
+]
